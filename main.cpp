@@ -6,21 +6,37 @@
 
 using namespace std;
 
+int GetNumber(const string &message)
+{
+    int input;
+    while(true)
+    {
+        cout<<message;
+        if(cin>>input)
+        {
+            break;
+        }
+
+        else
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout<<"Error with input. Try again."<<endl;
+        }
+    }
+    return input;
+}
+
 int main()
 {
-    int minVal;
-    int maxVal;
-    int chosen;
+    int minVal = GetNumber("\nEnter Minimum Value: ");
+    int maxVal = GetNumber("\nEnter Maximum Value: ");
+
     int random;
     int guess = 0;
     int flag = 0;
     bool correct = false;
     srand(time(0));
-
-    cout << "\nEnter Minimum Value: ";
-    cin >> minVal;
-    cout << "\nEnter Maximum Value: ";
-    cin >> maxVal;
 
     if (maxVal < minVal)
     {
@@ -33,8 +49,7 @@ int main()
 
     while (!correct)
     {
-        cout << "\nPlease Enter Your Guess: ";
-        cin >> guess;
+        guess = GetNumber("\nPlease Enter your Guess: ");
 
         cout << "\nYour Guess is";
 
