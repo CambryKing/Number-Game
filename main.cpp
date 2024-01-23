@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
+#include <unistd.h>
+#include <chrono>
+
 using namespace std;
 
 int main()
@@ -10,6 +13,7 @@ int main()
     int chosen;
     int random;
     int guess = 0;
+    int flag = 0;
     bool correct = false;
     srand(time(0));
 
@@ -32,21 +36,31 @@ int main()
         cout << "\nPlease Enter Your Guess: ";
         cin >> guess;
 
+        cout << "\nYour Guess is";
+
+        while (flag < 3)
+        {
+            cout << ".";
+            usleep(5000000);
+            flag++;
+        }
+
         if (guess < random)
         {
-            cout << "\nYour Guess is Too Small!";
+            cout << "Too Small!" << endl;
         }
 
         else if (guess > random)
         {
-            cout << "\nYour Guess is Too Big!";
+            cout << "Too Big!" << endl;
         }
 
         else
         {
-            cout << "\nYour Guess is Correct!!!";
+            cout << "Correct!!!" << endl;
             correct = true;
         }
+        flag = 0;
     }
 
     return 0;
