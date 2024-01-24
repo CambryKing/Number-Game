@@ -9,54 +9,54 @@ using namespace std;
 int GetNumber(const string &message)
 {
     int input;
-    while(true)
+    while (true)
     {
-        cout<<message;
-        if(cin>>input)
+        cout << message; // Print message passed to function
+        if (cin >> input)
         {
-            break;
+            break; // Ends loop if number is inputed
         }
 
         else
         {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout<<"Error with input. Try again."<<endl;
+            cin.clear();                                         // Reset Error Flags
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Through out non-numeric input
+            cout << "Error with input. Try again." << endl;      // Printed Error Message
         }
     }
-    return input;
+    return input; // Returns number
 }
 
 int main()
 {
-    int minVal = GetNumber("\nEnter Minimum Value: ");
-    int maxVal = GetNumber("\nEnter Maximum Value: ");
+    int minVal = GetNumber("\nEnter Minimum Value: "); // Returns minVal
+    int maxVal = GetNumber("\nEnter Maximum Value: "); // Returns maxVal
 
     int random;
     int guess = 0;
     int flag = 0;
     bool correct = false;
-    srand(time(0));
+    srand(time(0)); // Seed random number
 
-    if (maxVal < minVal)
+    if (maxVal < minVal) // Swap function if maxVal is smaller than minVal
     {
         int temp = maxVal;
         maxVal = minVal;
         minVal = temp;
     }
 
-    random = (rand() % (maxVal - minVal + 1)) + minVal;
+    random = (rand() % (maxVal - minVal + 1)) + minVal; // Create random number
 
     while (!correct)
     {
-        guess = GetNumber("\nPlease Enter your Guess: ");
+        guess = GetNumber("\nPlease Enter your Guess: "); // Return guessed number
 
         cout << "\nYour Guess is";
 
-        while (flag < 3)
+        while (flag < 3) // Added periods for dramatic effect
         {
             cout << ".";
-            usleep(5000000);
+            usleep(5000000); // OH! So dramatic!
             flag++;
         }
 
@@ -73,9 +73,9 @@ int main()
         else
         {
             cout << "Correct!!!" << endl;
-            correct = true;
+            correct = true; // Breaks loop
         }
-        flag = 0;
+        flag = 0; // Resets the drama flags
     }
 
     return 0;
