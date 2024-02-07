@@ -5,7 +5,7 @@
 */
 
 void display_cases(double *cases)
-{ 
+{
     for (int i = 0; i < 26; i++)
     {
         if (cases[i] == -1)
@@ -28,6 +28,45 @@ void display_money(double *money)
         if ((i + 1) % 7 == 0)
             cout << endl;
     }
+}
+
+double case_number(double *cases)
+{
+    int count = 0;
+    for (int i = 0; i < 26; i++)
+    {
+        if (cases[i] != -1)
+        {
+            count++;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    return count;
+}
+
+double max_case(double *cases)
+{
+    int max = -1;
+    for (int i = 0; i < 26; i++)
+    {
+        if (cases[i] > max)
+        {
+            max = cases[i];
+        }
+    }
+    return max;
+}
+
+int banker(double *cases, double player_money) // Formula from : https://www.reddit.com/r/askmath/comments/696pxs/deal_or_no_deal_figuring_out_the_deal_formula/
+{
+    double num_case = case_number(cases);
+    double max = max_case(cases);
+    double banker_suggestion = -1;
+
+    banker_suggestion = 12275.30 + (0.748 * player_money) - (2714.74 * num_case) - (0.4 * max) + (0.0000006986 * (player_money * player_money)) + (32.623 * (num_case));
 }
 
 int main()
