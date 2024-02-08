@@ -4,7 +4,7 @@
     THIS IS A WORK IN PROGRESS
 */
 
-void display_cases(double *cases)
+void display_cases(double *cases)       //Displays Cases (What's Left)
 {
     for (int i = 0; i < 26; i++)
     {
@@ -17,7 +17,7 @@ void display_cases(double *cases)
     }
 }
 
-void display_money(double *money)
+void display_money(double *money)       //Displays Money (What's Left)
 {
     for (int i = 0; i < 26; i++)
     {
@@ -30,7 +30,7 @@ void display_money(double *money)
     }
 }
 
-double case_number(double *cases)
+double case_number(double *cases)      //Returns Number of Cases
 {
     int count = 0;
     for (int i = 0; i < 26; i++)
@@ -47,7 +47,7 @@ double case_number(double *cases)
     return count;
 }
 
-double max_case(double *cases)
+double max_case(double *cases)          //Returns highest case left
 {
     int max = -1;
     for (int i = 0; i < 26; i++)
@@ -60,23 +60,30 @@ double max_case(double *cases)
     return max;
 }
 
-int banker(double *cases, double player_money) // Formula from : https://www.reddit.com/r/askmath/comments/696pxs/deal_or_no_deal_figuring_out_the_deal_formula/
+double banker(double *cases, double player_money) // Formula from : https://www.reddit.com/r/askmath/comments/696pxs/deal_or_no_deal_figuring_out_the_deal_formula/
 {
-    double num_case = case_number(cases);
+    /*double num_case = case_number(cases);
     double max = max_case(cases);
     double banker_suggestion = -1;
 
     banker_suggestion = 12275.30 + (0.748 * player_money) - (2714.74 * num_case) - (0.4 * max) + (0.0000006986 * (player_money * player_money)) + (32.623 * (num_case));
+
+    */
+
+    return 2714.74;
 }
 
 int main()
 {
-    double cases[26];
-    double money[26] = {0.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000};
-    int player_case;
-    double player_money;
-    bool deal = false;
-    int choice;
+    double cases[26];       //Initialize cases
+    double money[26] = {0.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000}; //Initializes money
+    int player_case;        //The case the Player chooses
+    double player_money;    //The money in the Player case
+    bool deal = false;      //While loop termination condition
+    int choice;             //Additional condition for while loop termination
+    int deal_choice;        //Choice for the banker
+    double banker_suggestion = -1;  //The suggestion for the banker
+    int round = 0;          //Activates the banker after three rounds
 
     srand(time(0));
     copy(begin(money), end(money), begin(cases));
@@ -114,6 +121,28 @@ int main()
                 }
             }
             cases[player_case - 1] = -1;
+        }
+
+        round++;
+
+        if (round == 3)
+        {
+            banker_suggestion = banker(cases, player_money);
+            cout << "\n-----------------------------------------\nTHE BANKER IS OFFERING $" << banker_suggestion << endl;
+            cout << "What is your choice?\n1.Deal?\n2.No Deal?\n";
+            cin >> deal_choice;
+
+            switch (deal_choice)
+            {
+            case 1:
+                cout << "\nYou have taken the deal!\n";
+                deal = true;
+                break;
+            case 2:
+                cout << "You have rejected the deal!\n";
+                round = 0;
+                break;
+            }
         }
 
         cout << "Exit? \n1. Yes\n2. No";
