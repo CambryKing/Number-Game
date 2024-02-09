@@ -4,7 +4,7 @@
     THIS IS A WORK IN PROGRESS
 */
 
-void display_cases(double *cases)       //Displays Cases (What's Left)
+void display_cases(double *cases) // Displays Cases (What's Left)
 {
     for (int i = 0; i < 26; i++)
     {
@@ -17,7 +17,7 @@ void display_cases(double *cases)       //Displays Cases (What's Left)
     }
 }
 
-void display_money(double *money)       //Displays Money (What's Left)
+void display_money(double *money) // Displays Money (What's Left)
 {
     for (int i = 0; i < 26; i++)
     {
@@ -30,7 +30,7 @@ void display_money(double *money)       //Displays Money (What's Left)
     }
 }
 
-double case_number(double *cases)      //Returns Number of Cases
+double case_number(double *cases) // Returns Number of Cases
 {
     int count = 0;
     for (int i = 0; i < 26; i++)
@@ -47,7 +47,7 @@ double case_number(double *cases)      //Returns Number of Cases
     return count;
 }
 
-double max_case(double *cases)          //Returns highest case left
+double max_case(double *cases) // Returns highest case left
 {
     int max = -1;
     for (int i = 0; i < 26; i++)
@@ -75,15 +75,15 @@ double banker(double *cases, double player_money) // Formula from : https://www.
 
 int main()
 {
-    double cases[26];       //Initialize cases
-    double money[26] = {0.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000}; //Initializes money
-    int player_case;        //The case the Player chooses
-    double player_money;    //The money in the Player case
-    bool deal = false;      //While loop termination condition
-    int choice;             //Additional condition for while loop termination
-    int deal_choice;        //Choice for the banker
-    double banker_suggestion = -1;  //The suggestion for the banker
-    int round = 0;          //Activates the banker after three rounds
+    double cases[26];                                                                                                                                                               // Initialize cases
+    double money[26] = {0.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000}; // Initializes money
+    int player_case;                                                                                                                                                                // The case the Player chooses
+    double player_money;                                                                                                                                                            // The money in the Player case
+    bool deal = false;                                                                                                                                                              // While loop termination condition
+    int choice;                                                                                                                                                                     // Additional condition for while loop termination
+    int deal_choice;                                                                                                                                                                // Choice for the banker
+    double banker_suggestion = -1;                                                                                                                                                  // The suggestion for the banker
+    int round = 0;                                                                                                                                                                  // Activates the banker after three rounds
 
     srand(time(0));
     copy(begin(money), end(money), begin(cases));
@@ -94,7 +94,7 @@ int main()
     cout << "\nPlease Choose your case!: ";
     cin >> player_case;
 
-    player_money = cases[player_case];
+    player_money = cases[player_case]; // THis is a change I am making
     cases[player_case - 1] = -1;
 
     while (!deal)
