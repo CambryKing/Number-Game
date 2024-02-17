@@ -84,6 +84,7 @@ int main()
     int deal_choice;                                                                                                                                                                // Choice for the banker
     double banker_suggestion = -1;                                                                                                                                                  // The suggestion for the banker
     int round = 0;                                                                                                                                                                  // Activates the banker after three rounds
+    bool flag = false;
 
     srand(time(0));
     copy(begin(money), end(money), begin(cases));
@@ -103,7 +104,7 @@ int main()
         display_cases(cases);
         cout << "\n-----------------------------------------\nMoney Left:\n";
         display_money(money);
-        cout << "\nWhich Case Do You Want To Open?";
+        cout << "\nWhich Case Do You Want To Open: ";
         cin >> player_case;
 
         if (cases[player_case] == -1)
@@ -145,16 +146,36 @@ int main()
             }
         }
 
-        cout << "Exit? \n1. Yes\n2. No";
-        cin >> choice;
+        if (deal == false)
+        {
+            cout << "Exit? \n1. Yes\n2. No\n";
+            cin >> choice;
+        }
 
         if (choice == 1)
         {
             deal = true;
+            flag = true;
         }
     }
 
-    cout << "\nYour Case Has $" << player_money << " Within! \nThank you for playing!";
+    // cout << "\nYour Case Has $" << player_money << " Within! \nThank you for playing!";
+
+    if (flag == false)
+    {
+        if (banker_suggestion > player_money)
+            cout << "\nYour Case Has $" << player_money << " Within.\nYou Win!";
+        else
+            cout << "\nYour Case Has $" << player_money << " Within.\nYou lose!";
+    }
+
+    else
+    {
+        if (banker_suggestion < player_money)
+            cout << "\nYour Case Has $" << player_money << " Within.\nYou Win!";
+        else
+            cout << "\nYour Case Has $" << player_money << " Within.\nYou Lose!";
+    }
 
     return 0;
 }
