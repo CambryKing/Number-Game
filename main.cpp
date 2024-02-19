@@ -1,4 +1,5 @@
 #include "guessing.cpp"
+#include "deal.cpp"
 
 int main()
 {
@@ -15,9 +16,9 @@ int main()
             run_guess();
             break;
         case 2:
+            run_deal();
             break;
     }
-
 
     return 0;
 }
