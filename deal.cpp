@@ -73,7 +73,7 @@ double banker(double *cases, double player_money) // Formula from : https://www.
     return 2714.74;
 }
 
-int main()
+void run_deal()
 {
     double cases[26];                                                                                                                                                               // Initialize cases
     double money[26] = {0.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000}; // Initializes money
@@ -177,5 +177,5 @@ int main()
             cout << "\nYour Case Has $" << player_money << " Within.\nYou Lose!";
     }
 
-    return 0;
+    return;
 }
