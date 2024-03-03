@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/skyda/OneDrive/Documents/GitHub/First Project/Number-Game",
-      "program": "c:/Users/skyda/OneDrive/Documents/GitHub/First Project/Number-Game/build/Debug/outDebug",
+      "cwd": "c:/Users/skyda/OneDrive/Documents/GitHub/First_Project/Number-Game",
+      "program": "c:/Users/skyda/OneDrive/Documents/GitHub/First_Project/Number-Game/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
