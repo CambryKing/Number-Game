@@ -1,6 +1,6 @@
 #include "hub.cpp"
 
-int main()
+void run_wizard()
 {
     int low_bound, high_bound, guess;
     char answer;
@@ -34,5 +34,5 @@ int main()
 
     cout << "Your Number is: " << guess << endl;
 
-    return 0;
+    return;
 }
