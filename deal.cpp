@@ -1,4 +1,4 @@
-#include "hub.cpp"
+#include "hub.h"
 
 /*
     THIS IS A WORK IN PROGRESS
@@ -6,6 +6,8 @@
 
 void display_cases(double *cases) // Displays Cases (What's Left)
 {
+    cout << "==============Welcome To The Deal Or Possibly Not Deal Game!==============\n\n\n";
+
     for (int i = 0; i < 26; i++)
     {
         if (cases[i] == -1)
