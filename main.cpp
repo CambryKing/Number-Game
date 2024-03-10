@@ -1,12 +1,13 @@
 #include "guessing.cpp"
 #include "deal.cpp"
 #include "wizard.cpp"
+using namespace std;
 
 int main()
 {
     int choice;
 
-    cout << "\n1. Guessing Game\n2. Deal or No Deal\n3. Wizard Game" << endl;
+    cout << "\n1. Guessing Game\n2. Deal or Possibly Not Deal\n3. Wizard Game" << endl;
 
     cout << "\nPlease Enter What Game You Want!: ";
 

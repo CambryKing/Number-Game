@@ -1,8 +1,6 @@
-#include "hub.cpp"
+#include "hub.h"
 
-using namespace std;
-
-int GetNumber(const string &message)
+int GetNumber(const string &message)    //Error handling to reject non-numeric input
 {
     int input;
     while (true)
@@ -16,7 +14,7 @@ int GetNumber(const string &message)
         else
         {
             cin.clear();                                         // Reset Error Flags
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Through out non-numeric input
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Throw out non-numeric input
             cout << "Error with input. Try again." << endl;      // Printed Error Message
         }
     }
@@ -25,6 +23,9 @@ int GetNumber(const string &message)
 
 void run_guess()
 {
+    cout<<"==============Welcome To The Guessing Game!==============\n\n\n";
+    cout<<"You will enter a range of number";
+
     int minVal = GetNumber("\nEnter Minimum Value: "); // Returns minVal
     int maxVal = GetNumber("\nEnter Maximum Value: "); // Returns maxVal
 
