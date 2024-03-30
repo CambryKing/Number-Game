@@ -75,5 +75,7 @@ void run_guess()
         flag = 0; // Resets the drama flags
     }
 
+    cout<<"Congrats, you have beaten the Guessing Game."<<endl;
+
     return;
 }
